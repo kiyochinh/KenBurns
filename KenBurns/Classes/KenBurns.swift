@@ -324,6 +324,10 @@ func ==(lhs: KenBurnsAnimation, rhs: KenBurnsAnimation) -> Bool {
                 nextImageView.kf.indicatorType = .activity
             }
         } else {
+            guard let queue = imageQueue else {
+                nextImageView.image = currentImageView.image
+                return
+            }
             nextImageView.image = imageQueue!.read()
         }
 
